@@ -40,3 +40,14 @@ form.addEventListener("submit", function(event) {
   }
 
 });
+const typed = new Typed("#typing", {
+  strings: [
+    "Web Developer",
+    "Programming Student",
+    "Learning JavaScript",
+    "Building Modern Websites"
+  ],
+  typeSpeed: 60,
+  backSpeed: 40,
+  loop: true
+});
