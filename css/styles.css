@@ -286,4 +286,14 @@ align-items:center;
 width:90%;
 }
 
+
+}
+.project-details {
+  display: none;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+.project-details.show {
+  display: block;
 }
