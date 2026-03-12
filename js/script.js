@@ -1,53 +1,75 @@
-// Project details toggle
+/* ===========================
+   Project Details Toggle
+=========================== */
+
 const buttons = document.querySelectorAll(".details-btn");
 
 buttons.forEach(button => {
+
   button.addEventListener("click", () => {
 
     const details = button.nextElementSibling;
 
     details.classList.toggle("show");
 
-    if (details.classList.contains("show")) {
+    if(details.classList.contains("show")){
       button.textContent = "Hide Details";
     } else {
       button.textContent = "Show Details";
     }
 
   });
-});
-const form = document.getElementById("contact-form");
-const message = document.getElementById("form-message");
 
-form.addEventListener("submit", function(event) {
+});
+
+
+
+/* ===========================
+   Contact Form Validation
+=========================== */
+
+const form = document.getElementById("contact-form");
+const formMessage = document.getElementById("form-message");
+
+form.addEventListener("submit", function(event){
 
   const name = document.getElementById("name").value.trim();
   const email = document.getElementById("email").value.trim();
-  const text = document.getElementById("message").value.trim();
+  const message = document.getElementById("message").value.trim();
 
-  if (name === "" || email === "" || text === "") {
+  if(name === "" || email === "" || message === ""){
 
     event.preventDefault();
 
-    message.textContent = "Please fill in all fields.";
-    message.style.color = "red";
+    formMessage.textContent = "Please complete all fields.";
+    formMessage.style.color = "red";
 
   } else {
 
-    message.textContent = "Message sent successfully!";
-    message.style.color = "green";
+    formMessage.textContent = "Message sent successfully!";
+    formMessage.style.color = "green";
 
   }
 
 });
-const typed = new Typed("#typing", {
-  strings: [
+
+
+
+/* ===========================
+   Typed.js Animation
+=========================== */
+
+new Typed("#typing", {
+
+  strings:[
     "Web Developer",
     "Programming Student",
     "Learning JavaScript",
     "Building Modern Websites"
   ],
-  typeSpeed: 60,
-  backSpeed: 40,
-  loop: true
+
+  typeSpeed:60,
+  backSpeed:40,
+  loop:true
+
 });
