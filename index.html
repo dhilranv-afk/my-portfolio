@@ -1,17 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Portfolio</title>
-  <link rel="stylesheet" href="css/styles.css" />
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"></head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ranveer Portfolio</title>
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+</head>
 <body>
-<div id="progress-bar"></div>  
-  <!-- Header -->
+
+  <!-- Scroll Progress -->
+  <div id="progress-bar"></div>
+
+  <!-- Navbar -->
   <header>
     <nav class="navbar">
-      <h1 class="logo">My Portfolio</h1>
+      <h1>Portfolio</h1>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
@@ -21,56 +29,48 @@
     </nav>
   </header>
 
-  <!-- Main -->
   <main>
 
     <!-- Hero -->
     <section class="hero" data-aos="fade-up">
-  <h2>Hi, I'm Ranveer</h2>
-  <p>
-    I am a 
-    <span id="typing"></span>
-    <span class="cursor">|</span>
-  </p>
-</section>
+      <h2>Hi, I'm Ranveer</h2>
+      <p>
+        I am a 
+        <span id="typing"></span>
+        <span class="cursor">|</span>
+      </p>
+    </section>
 
     <!-- About -->
     <section id="about" data-aos="fade-right">
       <h2>About Me</h2>
-      <p>I am a web developer focused on building responsive and interactive websites.</p>
+      <p>Web developer focused on responsive and interactive applications.</p>
     </section>
 
     <!-- Projects -->
     <section id="projects" data-aos="fade-up">
       <h2>Projects</h2>
 
-      <!-- Filter Buttons -->
       <div class="filters">
         <button class="filter-btn" data-filter="all">All</button>
         <button class="filter-btn" data-filter="html">HTML/CSS</button>
         <button class="filter-btn" data-filter="js">JavaScript</button>
       </div>
 
-      <!-- Project Cards -->
       <div class="project-container">
 
-        <div class="project-card" data-aos="zoom-in" data-aos-delay="100">
+        <div class="project-card" data-category="html" data-aos="zoom-in">
           <img src="images/project1.jpg" loading="lazy" alt="Project 1">
           <h3>Project 1</h3>
-          <p>HTML/CSS project</p>
+          <p>HTML/CSS Project</p>
         </div>
 
-        <div class="project-card" data-aos="zoom-in" data-aos-delay="200">
+        <div class="project-card" data-category="js" data-aos="zoom-in" data-aos-delay="150">
           <img src="images/project2.jpg" loading="lazy" alt="Project 2">
           <h3>Project 2</h3>
-          <p>JavaScript project</p>
+          <p>JavaScript Project</p>
         </div>
 
-        <div class="project-card" data-aos="zoom-in" data-aos-delay="300">
-          <img src="images/project2.jpg" loading="lazy" alt="Project 2">
-          <h3>Project 3</h3>
-          <p>JavaScript project</p>
-        </div>
       </div>
     </section>
 
@@ -87,11 +87,13 @@
 
   </main>
 
-  <!-- Footer -->
   <footer>
     <p>© 2026 Ranveer Dhillon</p>
   </footer>
 
+  <!-- JS -->
   <script src="js/script.js"></script>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script></body>
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+</body>
 </html>
