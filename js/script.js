@@ -1,88 +1,79 @@
-// Dark Mode Toggle
-const toggle = document.getElementById("darkModeToggle");
-
-toggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-
-  const theme = document.body.classList.contains("dark") ? "dark" : "light";
-  localStorage.setItem("theme", theme);
-});
-
-// Load saved theme
-window.addEventListener("load", () => {
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark");
-  }
-});
-
-// Project Filtering
-const filterButtons = document.querySelectorAll(".filter-btn");
-const projects = document.querySelectorAll(".project-card");
-
-filterButtons.forEach(button => {
-  button.addEventListener("click", () => {
-    const filter = button.dataset.filter;
-
-    projects.forEach(project => {
-      if (filter === "all" || project.dataset.category === filter) {
-        project.style.display = "block";
-      } else {
-        project.style.display = "none";
-      }
-    });
-  });
-});
-
-// Contact Form (Basic Validation)
-document.getElementById("contactForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-  alert("Message sent successfully!");
-});
+// Initialize AOS
 AOS.init({
   duration: 1000,
   once: true
 });
+
+// Dark Mode
+const toggle = document.getElementById("darkModeToggle");
+
+toggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+  localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+});
+
+window.addEventListener("load", () => {
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
+  }
+});
+
+// Typing Effect
 const words = ["Web Developer", "Frontend Developer", "JavaScript Enthusiast"];
-let wordIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
+let i = 0, j = 0, deleting = false;
+const typing = document.getElementById("typing");
 
-const typingElement = document.getElementById("typing");
+function type() {
+  const word = words[i];
 
-function typeEffect() {
-  const currentWord = words[wordIndex];
+  typing.textContent = word.substring(0, j);
 
-  if (isDeleting) {
-    charIndex--;
+  if (!deleting) {
+    j++;
+    if (j > word.length) {
+      deleting = true;
+      setTimeout(type, 1000);
+      return;
+    }
   } else {
-    charIndex++;
+    j--;
+    if (j === 0) {
+      deleting = false;
+      i = (i + 1) % words.length;
+    }
   }
 
-  typingElement.textContent = currentWord.substring(0, charIndex);
-
-  let speed = isDeleting ? 50 : 100;
-
-  if (!isDeleting && charIndex === currentWord.length) {
-    speed = 1500; // pause at end
-    isDeleting = true;
-  } else if (isDeleting && charIndex === 0) {
-    isDeleting = false;
-    wordIndex = (wordIndex + 1) % words.length;
-    speed = 500;
-  }
-
-  setTimeout(typeEffect, speed);
+  setTimeout(type, deleting ? 50 : 100);
 }
 
-// Start typing after page loads
-window.addEventListener("load", typeEffect);
+window.addEventListener("load", type);
 
+// Scroll Progress Bar
 window.addEventListener("scroll", () => {
   const scrollTop = document.documentElement.scrollTop;
-  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  document.getElementById("progress-bar").style.width = (scrollTop / height) * 100 + "%";
+});
 
-  const progress = (scrollTop / scrollHeight) * 100;
+// Project Filter
+const buttons = document.querySelectorAll(".filter-btn");
+const cards = document.querySelectorAll(".project-card");
 
-  document.getElementById("progress-bar").style.width = progress + "%";
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    const filter = btn.dataset.filter;
+
+    cards.forEach(card => {
+      card.style.display =
+        filter === "all" || card.dataset.category === filter
+          ? "block"
+          : "none";
+    });
+  });
+});
+
+// Form
+document.getElementById("contactForm").addEventListener("submit", e => {
+  e.preventDefault();
+  alert("Message sent!");
 });
