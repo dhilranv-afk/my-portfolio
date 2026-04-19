@@ -135,3 +135,16 @@ footer {
   min-width: 180px;
   display: inline-block;
 }
+#progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 4px;
+  background: #00bcd4;
+  z-index: 9999;
+  transition: width 0.1s ease-out;
+}
+body.dark #progress-bar {
+  background: #ff9800;
+}
