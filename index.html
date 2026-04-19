@@ -1,197 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Ranveer Dhillon | Portfolio</title>
-
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome -->
-  <link rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/styles.css">
-
-  <!-- Typed.js -->
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-
-  <!-- JS -->
-  <script src="js/script.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-<header class="header">
-  <nav class="nav container">
-
-    <h1 class="logo">Ranveer Dhillon</h1>
-
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-
-  </nav>
-</header>
-
-
-<!-- HERO -->
-<section class="hero">
-
-  <div class="hero-content container">
-
-    <h2>Hello, I'm</h2>
-    <h1>Ranveer Dhillon</h1>
-
-    <p><span id="typing"></span></p>
-
-    <a href="#projects" class="btn">View My Projects</a>
-
-  </div>
-
-</section>
-
-
-<!-- ABOUT -->
-<section id="about" class="section container">
-
-  <h2>About Me</h2>
-
-  <p>
-    I am a programming student learning web development.
-    I enjoy building responsive websites using HTML, CSS, and JavaScript.
-  </p>
-
-</section>
-
-
-<!-- PROJECTS -->
-<section id="projects" class="section container">
-
-<h2>Projects</h2>
-
-<!-- Featured Project -->
-
-<div class="featured-project">
-
-<div class="featured-text">
-
-<span class="project-tag">Featured</span>
-
-<h3>Portfolio Website</h3>
-
-<p>
-A responsive portfolio built using HTML, CSS and JavaScript.
-Includes animations, modern UI layout and interactive features.
-</p>
-
-<button class="open-modal" data-project="portfolio">
-View Project
-</button>
-
-</div>
-
-</div>
-
-
-<!-- Project Grid -->
-
-<div class="project-grid">
-
-<div class="project-card">
-
-<h3>JavaScript Calculator</h3>
-
-<p>Simple calculator built with JavaScript.</p>
-
-<button class="open-modal" data-project="calculator">
-View Project
-</button>
-
-</div>
-
-
-<div class="project-card">
-
-<h3>Future Project</h3>
-
-<p>Additional projects will be added here.</p>
-
-<button class="open-modal" data-project="future">
-View Project
-</button>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- CONTACT -->
-<section id="contact" class="section container">
-
-<h2>Contact</h2>
-
-<form id="contact-form">
-
-<input type="text" id="name" placeholder="Your Name">
-
-<input type="email" id="email" placeholder="Your Email">
-
-<textarea id="message" placeholder="Your Message"></textarea>
-
-<button type="submit" class="btn">Send Message</button>
-
-<p id="form-message"></p>
-
-</form>
-
-</section>
-
-
-<!-- MODAL -->
-<div id="project-modal" class="modal">
-
-<div class="modal-content">
-
-<span class="close-modal">&times;</span>
-
-<h3 id="modal-title"></h3>
-
-<p id="modal-description"></p>
-
-</div>
-
-</div>
-
-
-<!-- FOOTER -->
-<footer class="footer">
-
-<div class="container footer-content">
-
-<p>© 2026 Ranveer Dhillon</p>
-
-<div class="social-links">
-
-<a href="#"><i class="fab fa-github"></i></a>
-<a href="#"><i class="fab fa-linkedin"></i></a>
-<a href="#"><i class="fas fa-envelope"></i></a>
-
-</div>
-
-</div>
-
-</footer>
-
-
+  <!-- Header -->
+  <header>
+    <nav class="navbar">
+      <h1 class="logo">My Portfolio</h1>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button id="darkModeToggle">🌙</button>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main>
+
+    <!-- Hero -->
+    <section class="hero">
+      <h2>Hi, I'm Ranveer</h2>
+      <p>Web Developer | JavaScript | Frontend</p>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>I am a web developer focused on building responsive and interactive websites.</p>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+      <h2>Projects</h2>
+
+      <!-- Filter Buttons -->
+      <div class="filters">
+        <button class="filter-btn" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="html">HTML/CSS</button>
+        <button class="filter-btn" data-filter="js">JavaScript</button>
+      </div>
+
+      <!-- Project Cards -->
+      <div class="project-container">
+
+        <div class="project-card" data-category="html">
+          <img src="images/project1.jpg" loading="lazy" alt="Project 1">
+          <h3>Project 1</h3>
+          <p>HTML/CSS project</p>
+        </div>
+
+        <div class="project-card" data-category="js">
+          <img src="images/project2.jpg" loading="lazy" alt="Project 2">
+          <h3>Project 2</h3>
+          <p>JavaScript project</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <h2>Contact</h2>
+      <form id="contactForm">
+        <input type="text" placeholder="Name" required>
+        <input type="email" placeholder="Email" required>
+        <textarea placeholder="Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Ranveer Dhillon</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
-
