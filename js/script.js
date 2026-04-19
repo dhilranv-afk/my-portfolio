@@ -39,3 +39,7 @@ document.getElementById("contactForm").addEventListener("submit", function(e) {
   e.preventDefault();
   alert("Message sent successfully!");
 });
+AOS.init({
+  duration: 1000,
+  once: true
+});
