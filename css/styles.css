@@ -118,3 +118,6 @@ footer {
     align-items: center;
   }
 }
+[data-aos] {
+  transition-property: transform, opacity;
+}
