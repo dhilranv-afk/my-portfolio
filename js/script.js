@@ -43,3 +43,37 @@ AOS.init({
   duration: 1000,
   once: true
 });
+const words = ["Web Developer", "Frontend Developer", "JavaScript Enthusiast"];
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+const typingElement = document.getElementById("typing");
+
+function typeEffect() {
+  const currentWord = words[wordIndex];
+
+  if (isDeleting) {
+    charIndex--;
+  } else {
+    charIndex++;
+  }
+
+  typingElement.textContent = currentWord.substring(0, charIndex);
+
+  let speed = isDeleting ? 50 : 100;
+
+  if (!isDeleting && charIndex === currentWord.length) {
+    speed = 1500; // pause at end
+    isDeleting = true;
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    wordIndex = (wordIndex + 1) % words.length;
+    speed = 500;
+  }
+
+  setTimeout(typeEffect, speed);
+}
+
+// Start typing after page loads
+window.addEventListener("load", typeEffect);
