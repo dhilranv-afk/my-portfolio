@@ -1,39 +1,31 @@
-// Initialize AOS
-AOS.init({
-  duration: 1000,
-  once: true
-});
-
-// Dark Mode
-const toggle = document.getElementById("darkModeToggle");
+// ===== Dark Mode =====
+const toggle = document.getElementById("darkToggle");
 
 toggle.addEventListener("click", () => {
   document.body.classList.toggle("dark");
-  localStorage.setItem("theme", document.body.classList.contains("dark") ? "dark" : "light");
+  localStorage.setItem("theme",
+    document.body.classList.contains("dark") ? "dark" : "light"
+  );
 });
 
-window.addEventListener("load", () => {
-  if (localStorage.getItem("theme") === "dark") {
-    document.body.classList.add("dark");
-  }
-});
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+}
 
-// Typing Effect
+// ===== Typing Effect =====
 const words = ["Web Developer", "Frontend Developer", "JavaScript Enthusiast"];
 let i = 0, j = 0, deleting = false;
 const typing = document.getElementById("typing");
 
 function type() {
   const word = words[i];
-
   typing.textContent = word.substring(0, j);
 
   if (!deleting) {
     j++;
     if (j > word.length) {
       deleting = true;
-      setTimeout(type, 1000);
-      return;
+      return setTimeout(type, 1200);
     }
   } else {
     j--;
@@ -45,25 +37,42 @@ function type() {
 
   setTimeout(type, deleting ? 50 : 100);
 }
+type();
 
-window.addEventListener("load", type);
+// ===== Scroll Progress =====
+let ticking = false;
 
-// Scroll Progress Bar
 window.addEventListener("scroll", () => {
-  const scrollTop = document.documentElement.scrollTop;
-  const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  document.getElementById("progress-bar").style.width = (scrollTop / height) * 100 + "%";
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      const scrollTop = document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      document.getElementById("progress-bar").style.width =
+        (scrollTop / height) * 100 + "%";
+      ticking = false;
+    });
+    ticking = true;
+  }
 });
 
-// Project Filter
-const buttons = document.querySelectorAll(".filter-btn");
-const cards = document.querySelectorAll(".project-card");
+// ===== Intersection Observer (Reveal) =====
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("active");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1 });
 
-buttons.forEach(btn => {
+document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+// ===== Project Filter =====
+document.querySelectorAll("[data-filter]").forEach(btn => {
   btn.addEventListener("click", () => {
     const filter = btn.dataset.filter;
 
-    cards.forEach(card => {
+    document.querySelectorAll(".card").forEach(card => {
       card.style.display =
         filter === "all" || card.dataset.category === filter
           ? "block"
@@ -72,8 +81,8 @@ buttons.forEach(btn => {
   });
 });
 
-// Form
-document.getElementById("contactForm").addEventListener("submit", e => {
+// ===== Form =====
+document.getElementById("form").addEventListener("submit", e => {
   e.preventDefault();
   alert("Message sent!");
 });
