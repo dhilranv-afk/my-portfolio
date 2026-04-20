@@ -3,81 +3,84 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ranveer Portfolio</title>
+  <title>Ranveer Dhillon | Portfolio</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Portfolio of Ranveer Dhillon, web developer.">
+  <meta name="theme-color" content="#764ba2">
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/styles.css">
-
-  <!-- AOS -->
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
 </head>
+
 <body>
 
-  <!-- Scroll Progress -->
+  <!-- Progress Bar -->
   <div id="progress-bar"></div>
 
-  <!-- Navbar -->
-  <header>
-    <nav class="navbar">
-      <h1>Portfolio</h1>
+  <!-- Header -->
+  <header class="navbar">
+    <h1>Portfolio</h1>
+
+    <nav>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <button id="darkModeToggle">🌙</button>
     </nav>
+
+    <button id="darkToggle" aria-label="Toggle dark mode">🌙</button>
   </header>
 
   <main>
 
     <!-- Hero -->
-    <section class="hero" data-aos="fade-up">
+    <section class="hero reveal">
       <h2>Hi, I'm Ranveer</h2>
       <p>
-        I am a 
-        <span id="typing"></span>
+        I am a <span id="typing"></span>
         <span class="cursor">|</span>
       </p>
     </section>
 
     <!-- About -->
-    <section id="about" data-aos="fade-right">
+    <section id="about" class="reveal left">
       <h2>About Me</h2>
-      <p>Web developer focused on responsive and interactive applications.</p>
+      <p>Web developer specializing in modern, responsive, and performant applications.</p>
     </section>
 
     <!-- Projects -->
-    <section id="projects" data-aos="fade-up">
+    <section id="projects" class="reveal">
       <h2>Projects</h2>
 
       <div class="filters">
-        <button class="filter-btn" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="html">HTML/CSS</button>
-        <button class="filter-btn" data-filter="js">JavaScript</button>
+        <button data-filter="all">All</button>
+        <button data-filter="html">HTML/CSS</button>
+        <button data-filter="js">JavaScript</button>
       </div>
 
-      <div class="project-container">
+      <div class="grid">
 
-        <div class="project-card" data-category="html" data-aos="zoom-in">
-          <img src="images/project1.jpg" loading="lazy" alt="Project 1">
+        <article class="card reveal zoom" data-category="html">
+          <img src="images/project1.webp" alt="Project 1 UI" width="300" height="180">
           <h3>Project 1</h3>
-          <p>HTML/CSS Project</p>
-        </div>
+          <p>Responsive HTML/CSS project.</p>
+        </article>
 
-        <div class="project-card" data-category="js" data-aos="zoom-in" data-aos-delay="150">
-          <img src="images/project2.jpg" loading="lazy" alt="Project 2">
+        <article class="card reveal zoom" data-category="js">
+          <img src="images/project2.webp" alt="Project 2 UI" width="300" height="180">
           <h3>Project 2</h3>
-          <p>JavaScript Project</p>
-        </div>
+          <p>Interactive JavaScript project.</p>
+        </article>
 
       </div>
     </section>
 
     <!-- Contact -->
-    <section id="contact" data-aos="fade-left">
+    <section id="contact" class="reveal right">
       <h2>Contact</h2>
-      <form id="contactForm">
+      <form id="form">
         <input type="text" placeholder="Name" required>
         <input type="email" placeholder="Email" required>
         <textarea placeholder="Message" required></textarea>
@@ -91,9 +94,7 @@
     <p>© 2026 Ranveer Dhillon</p>
   </footer>
 
-  <!-- JS -->
-  <script src="js/script.js"></script>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="js/script.js" defer></script>
 
 </body>
 </html>
