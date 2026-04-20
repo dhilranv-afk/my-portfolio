@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: system-ui, sans-serif;
 }
 
 html {
@@ -16,7 +16,6 @@ body {
   transition: 0.3s;
 }
 
-/* Dark Mode */
 body.dark {
   background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
 }
@@ -34,11 +33,12 @@ body.dark {
 
 /* Navbar */
 .navbar {
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
   padding: 15px 30px;
-  position: sticky;
-  top: 0;
+
   background: rgba(0,0,0,0.4);
   backdrop-filter: blur(10px);
 }
@@ -67,6 +67,9 @@ section {
 
   background: rgba(255,255,255,0.08);
   backdrop-filter: blur(10px);
+
+  content-visibility: auto;
+  contain-intrinsic-size: 500px;
 }
 
 /* Hero */
@@ -84,30 +87,18 @@ section {
   50% { opacity: 0; }
 }
 
-/* Filters */
-.filters {
-  margin-bottom: 20px;
-}
-
-button {
-  padding: 10px;
-  margin: 5px;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-}
-
-/* Projects */
-.project-container {
+/* Grid */
+.grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 20px;
+  justify-content: center;
 }
 
-.project-card {
-  width: 250px;
-  padding: 15px;
+/* Cards */
+.card {
+  width: 280px;
+  padding: 20px;
   border-radius: 15px;
 
   background: rgba(255,255,255,0.1);
@@ -116,9 +107,25 @@ button {
   transition: 0.3s;
 }
 
-.project-card:hover {
-  transform: scale(1.05);
+.card:hover {
+  transform: translateY(-5px) scale(1.03);
 }
+
+/* Reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: none;
+}
+
+.left { transform: translateX(-50px); }
+.right { transform: translateX(50px); }
+.zoom { transform: scale(0.9); }
 
 /* Form */
 form {
@@ -133,10 +140,11 @@ input, textarea {
   padding: 10px;
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
+button {
+  padding: 10px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
 }
 
 /* Responsive */
@@ -145,7 +153,7 @@ footer {
     flex-direction: column;
   }
 
-  .project-container {
+  .grid {
     flex-direction: column;
     align-items: center;
   }
